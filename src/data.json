@@ -1,0 +1,34 @@
+{
+  "cast": [
+    {
+      "id": "100",
+      "role": "Actor",
+      "name": "Jean-Claude Van Damme",
+      "placement": "3"
+    },
+    {
+      "id": "1021",
+      "role": "Director",
+      "name": "Newt Arnold",
+      "placement": "1"
+    },
+    {
+      "id": "4500",
+      "role": "Actor",
+      "name": "Bolo Yeung",
+      "placement": "2"
+    },
+    {
+      "id": "188",
+      "role": "Actor",
+      "name": "Donald Gibb",
+      "placement": "4"
+    },
+    {
+      "id": "5265",
+      "role": "Actor",
+      "name": "Leah Ayres",
+      "placement": "5"
+    }
+  ]
+}

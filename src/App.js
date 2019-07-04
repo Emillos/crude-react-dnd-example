@@ -1,88 +1,29 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react'
+import { useRoutes } from 'hookrouter';
+import Bloodsport from './routes/bloodsport'
+import NotFoundPage from './routes/notFound'
+import TopMenu from './routes/topMenu'
+import DashBoard from './routes/dashboard'
+import { AuthContext } from './context/initContext'
+
 import './App.css';
 
-class App extends Component {
-  constructor(props){
-    super(props)
-    this.state = {
-      cast:[
-        {
-          id:'100', 
-          role:'Actor', 
-          name:'Jean-Claude Van Damme',
-          placement:'1'
-        }, 
-        {
-          id:'1021',
-          role:'Director', 
-          name: 'Newt Arnold',
-          placement:'2'
-        }, 
-        {
-          id:'4500',
-          role:'Actor', 
-          name:'Bolo Yeung',
-          placement:'3'
-        }, 
-        {
-          id:'188',
-          role:'Actor', 
-          name:'Donald Gibb',
-          placement:'4'
-        }, 
-        {
-          id:'5265',
-          role:'Actor', 
-          name:'Leah Ayres',
-          placement:'5'
-        }
-      ],
-      draggedElementIndex:null
-    }
-  }
+const routes = {
+  '/': () => <DashBoard />,
+  '/bloodsport': () => <Bloodsport />
+};
 
-  handleDragOver(e){
-    e.preventDefault()
-  }
-  handleDragStart(e, index){
-    e.dataTransfer.setData('index', index)
-    this.setState({
-      draggedElementIndex:index
-    })
-  }
-  handleDrop(e, index){
-    const {cast, draggedElementIndex} = this.state
-    let replacedCast = cast[index]
-    cast.splice(index, 1, cast[draggedElementIndex])
-
-    cast.splice(draggedElementIndex, 1, replacedCast)
-    this.setState({
-      cast
-    })
-  }
-  render(){
-    const {cast} = this.state
-     return (
-      <div className="App">
-        <h1>Title:Blood Sport!</h1>
-        <div className='ulli'>
-          {cast.map((c, i) => {
-            return(
-              <div 
-              key={i}
-              className='castBox' 
-              draggable
-              onDragStart={(e) => this.handleDragStart(e, i)}
-              onDragOver={(e) => this.handleDragOver(e)}
-              onDrop={(e) => this.handleDrop(e, i)}>
-                <p>Name: {c.name} - Role: {c.role}</p>
-              </div>            
-            ) 
-          })}
-        </div>
-      </div>
-    );
-  }
+const App = () => {
+  const [authenticated, setAuthenticate] = useState(false)
+  const routeResult = useRoutes(routes);
+  return (
+    <div className='content'>
+      <AuthContext.Provider value={{ authenticated: authenticated, authenticateUser: setAuthenticate }}>
+        <TopMenu />
+      </AuthContext.Provider>
+      {routeResult || <NotFoundPage />}
+    </div>
+  )
 }
 
-export default App;
+export default App

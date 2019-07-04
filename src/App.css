@@ -7,16 +7,60 @@ h1{
   border-bottom:none;
   display: block;
   height:50px;
-  width:500px;
+  width:700px;
   display: block;
   margin: auto;
   text-indent: 5px;
   cursor: pointer;
 }
+.castBox:active{
+  background-color: aqua;
+}
+
 .castBox:last-child{
   border-bottom:1px solid grey;
 }
 
+.castBox span{
+  float: right;
+  margin-right: 10px
+}
+
 .ulli{
   margin-top:50px
+}
+
+.topMenu{
+  border-bottom: 1px solid grey;
+  background-color: bisque;
+  height: 40px;
+}
+
+.login, .home{
+  display: inline-block;
+}
+
+.setOrder{
+  cursor: pointer;
+  height: 45px;
+  font-size: 18px;
+  background-color: bisque;
+  border:1px solid grey;
+  display: block;
+  margin: 25px auto;
+  padding: 0 20px;
+}
+.setOrder:hover{
+  background-color: beige;
+}
+
+.home{
+  text-indent: 10px;
+  color: dimgrey;
+  text-decoration: none;
+}
+.login button{
+  cursor: pointer;
+  margin:10px; 
+  height: 20px;
 }
